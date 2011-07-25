@@ -117,14 +117,14 @@ module Mailee
       put(:test, :contacts => contacts)
     end
     def ready date=nil, hour=0
-      if date && date.is_a?(Date) && date > Time.now
-        put(:ready, :when => 'after', :after => {:date => date.strftime("%d/%m/%Y"), :hour => date.strftime('%H')})
+      if date.respond_to?(:strftime)
+        put(:ready, :when => 'after', :after => { :date => date.strftime("%d/%m/%Y"), :hour => date.strftime('%H') })
       else
         put(:ready, :when => 'now')
       end
     end
   end
-  
+
   # The Report class is still beta. It can return the results of a
   # message - total deliveries, accesses and returns. There are also
   # methods for getting accesses, unsubscribes and returns in "real time".
