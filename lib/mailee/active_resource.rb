@@ -1,4 +1,5 @@
-# coding: utf-8
+# encoding: utf-8
+require 'active_resource'
 
 module Mailee
 
@@ -129,5 +130,5 @@ module Mailee
   # methods for getting accesses, unsubscribes and returns in "real time".
   class Report < Config
   end
-
 end
+

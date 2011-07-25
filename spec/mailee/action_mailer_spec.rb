@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/am_spec_helper')
+require "am_spec_helper"
   
 describe "Mailee" do
 
@@ -23,5 +23,5 @@ describe "Mailee" do
     result.mailee_message.from_name.should_not be('Maiz')
     result.mailee_message.from_email.should_not be('maiz@softa.com.br')
   end
-
 end
+

@@ -18,7 +18,7 @@ E.g. rake mailee:send CLASS=Contact AFTER=1.day.
   task :send => :environment do
     klass = obtain_class
     after = obtain_after
-    raise "A classe #{klass.name} deve ser sincronizada com o Mailee. Adicione o código 'sync_with_mailee'" if ! klass.syncd?
+    raise "A classe #{klass.name} deve ser sincronizada com o Mailee. Adicione o código 'sync_with_mailee'" unless klass.respond_to?(:sync_with_mailee)
     print "Enviando\n"
     klass.send_all_to_mailee(after) do
       print "."
@@ -26,3 +26,4 @@ E.g. rake mailee:send CLASS=Contact AFTER=1.day.
     end
   end
 end
+

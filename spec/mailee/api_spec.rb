@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require "spec_helper"
 
 describe "Mailee" do
 
@@ -33,11 +33,11 @@ describe "Mailee" do
   end
 
   it "should get all contacts" do
-    Array.new(25){|i| Mailee::Contact.create :email => "rest_test_#{@moment}_#{i}@test.com"}
+    25.times { |i| Mailee::Contact.create :email => "rest_test_#{@moment}_#{i}@test.com" }
     contacts = Mailee::Contact.find(:all)
-    contacts.size.should be(15)
+    contacts.size.should == 15
     contacts = Mailee::Contact.find(:all, :params => {:page => 2, :by_keyword => "rest_test_#{@moment}" })
-    contacts.size.should be(10)
+    contacts.size.should == 10
   end
 
   it "should create contact - and find by id" do

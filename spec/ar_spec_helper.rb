@@ -1,13 +1,4 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'rspec'
-require 'sqlite3'
-require 'active_record'
-require 'mailee'
-
-RSpec.configure do |config|
-  Mailee::Config.site = "http://api.869a72b17b05a.mailee-api.mailee.me"
-end
+require "spec_helper"
 
 db = "mailee-api-test.db"
 File.unlink(db) rescue nil
@@ -46,3 +37,4 @@ class FooList < ActiveRecord::Base
     Mailee::List.find(@@list.id).lists_contacts_count
   end
 end
+

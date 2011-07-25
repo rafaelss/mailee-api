@@ -1,9 +1,15 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'rspec'
-require 'active_record'
-require 'mailee'
+require "rspec"
+require "active_record"
+require "active_resource"
+require "action_mailer"
+require "sqlite3"
+
+$LOAD_PATH.unshift(File.expand_path("../../lib", __FILE__))
+require "mailee"
+
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |file| require file }
 
 RSpec.configure do |config|
   Mailee::Config.site = "http://api.869a72b17b05a.mailee-api.mailee.me"
 end
+
